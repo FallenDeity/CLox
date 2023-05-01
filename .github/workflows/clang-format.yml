@@ -11,4 +11,3 @@ jobs:
       with:
         clang-format-version: '15'
         extensions: 'h,cpp,c'
-

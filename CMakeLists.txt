@@ -3,4 +3,4 @@ project(Lox C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(Lox main.c)
+add_executable(Lox src/common.c src/common.h)
