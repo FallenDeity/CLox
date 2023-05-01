@@ -30,16 +30,16 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: get-cmake
-        uses: lukka/get-cmake@v3.21.1
+        uses: lukka/get-cmake@latest
 
       - name: Run vcpkg
-        uses: lukka/run-vcpkg@v6
+        uses: lukka/run-vcpkg@v11.1
         with:
           # Just install vcpkg for now, do not install any ports in this step yet.
           setupOnly: true
           # Location of the vcpkg as submodule of the repository.
           vcpkgDirectory: '${{ github.workspace }}/vcpkg'
-          vcpkgGitCommitId: 'c1b768b0d6bc9b05d6272d604496d33a3faedd90'
+          vcpkgGitCommitId: '5b1214315250939257ef5d62ecdcbca18cf4fb1c'
           # Since the cache must be invalidated when content of the vcpkg.json file changes, let's
           # compute its hash and append this to the computed cache's key.
           appendedCacheKey: ${{ hashFiles( '**/vcpkg.json' ) }}
@@ -47,7 +47,7 @@ jobs:
           # Ensure the vcpkg artifacts are cached, they are generated in the 'CMAKE_BINARY_DIR/vcpkg_installed'.
           additionalCachedPaths: ${{ env.buildDir }}/vcpkg_installed
       - name: 'Run CMake with Ninja, install dependencies with vcpkg, build with CMake'
-        uses: lukka/run-cmake@v3
+        uses: lukka/run-cmake@v10
         with:
           cmakeListsOrSettingsJson: CMakeListsTxtBasic
           cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
