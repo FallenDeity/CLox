@@ -12,14 +12,15 @@ env:
 
 
 jobs:
-build:
-  - uses: lukka/get-cmake@latest
+  build:
+    steps:
+      - uses: lukka/get-cmake@latest
 
-  - name: Setup vcpkg
-    uses: lukka/run-vcpkg@v11
+      - name: Setup vcpkg
+        uses: lukka/run-vcpkg@v11
 
-  - name: Build with CMake
-    uses: lukka/run-cmake@v10
-    with:
-      configurePreset: 'ninja-multi-vcpkg'
-      buildPreset: 'ninja-multi-vcpkg'
+      - name: Build with CMake
+        uses: lukka/run-cmake@v10
+        with:
+          configurePreset: 'ninja-multi-vcpkg'
+          buildPreset: 'ninja-multi-vcpkg'
